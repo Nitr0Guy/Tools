@@ -26,7 +26,8 @@ A PowerShell WPF GUI tool that authenticates to **Microsoft Graph**, searches **
 
 ## Screenshots
 
-> *(Add screenshots of the running GUI here)*
+<img width="1618" height="1092" alt="image" src="https://github.com/user-attachments/assets/5aca26e0-6b86-4ede-994a-ce9fadcde285" />
+
 
 ---
 
