@@ -179,10 +179,17 @@ The device must be Azure AD joined with LAPS configured. The button is hidden if
 Requires `BitlockerKey.Read.All`. Keys are only stored in Azure AD for Azure AD joined / hybrid joined devices with key escrow enabled.
 
 **Apps tab shows 0 applications**
-`DeviceManagementManagedDevices.Read.All` is required, or the device may not have reported detected apps to Intune yet.
+The `DeviceManagementManagedDevices.Read.All` permission is required, or the device may not have reported detected apps to Intune yet.
 
-**PDF export opens HTML instead of PDF**
-Microsoft Edge or Google Chrome must be installed. The tool falls back to opening the HTML file when neither browser is detected.
+---
+
+## License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
