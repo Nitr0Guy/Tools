@@ -332,48 +332,84 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
 
                         <!-- Header -->
                         <StackPanel Grid.Row="0">
-                            <DockPanel VerticalAlignment="Center" Margin="0,0,0,4">
-                                <Border Name="RefreshDeviceBtn" Cursor="Hand" DockPanel.Dock="Right"
-                                        CornerRadius="6" Padding="14,7" VerticalAlignment="Center" Margin="6,2,0,0"
-                                        Background="{DynamicResource ThHover}" BorderBrush="{DynamicResource ThBorder}"
-                                        BorderThickness="1">
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="&#x1F504;" FontSize="13"
-                                                   Foreground="{DynamicResource ThTxt2}" Margin="0,0,7,0"
-                                                   VerticalAlignment="Center"/>
-                                        <TextBlock Text="Refresh" FontSize="13" FontWeight="Medium"
-                                                   Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
-                                    </StackPanel>
-                                </Border>
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Name="DetailTitle" FontSize="22" FontWeight="SemiBold"
-                                               Foreground="{DynamicResource ThTxt1}" VerticalAlignment="Center"/>
-                                    <Border Name="SyncDeviceBtn" Cursor="Hand"
-                                            CornerRadius="6" Padding="14,7" VerticalAlignment="Center" Margin="12,2,0,0"
-                                            Background="{DynamicResource ThHover}" BorderBrush="{DynamicResource ThBorder}"
-                                            BorderThickness="1">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="&#x21BB;" FontSize="15" FontWeight="SemiBold"
-                                                       Foreground="{DynamicResource ThTxt2}" Margin="0,0,7,0"
-                                                       VerticalAlignment="Center"/>
-                                            <TextBlock Text="Sync" FontSize="13" FontWeight="Medium"
-                                                       Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                            <Grid Margin="0,0,0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" MaxWidth="340"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Name="DetailTitle" FontSize="22" FontWeight="SemiBold"
+                                           Foreground="{DynamicResource ThTxt1}" VerticalAlignment="Center"
+                                           TextTrimming="CharacterEllipsis"/>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                                            Margin="20,0,0,0">
+                                    <!-- Device Actions group -->
+                                    <Border CornerRadius="8" BorderBrush="{DynamicResource ThBorder}" BorderThickness="1"
+                                            Background="{DynamicResource ThSurfaceAlt}" Padding="12,8" Margin="0,0,12,0">
+                                        <StackPanel>
+                                            <TextBlock Text="DEVICE ACTIONS" FontSize="10" FontWeight="Bold"
+                                                       Foreground="{DynamicResource ThTxt3}" Margin="0,0,0,6"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border Name="RefreshBtn" Cursor="Hand"
+                                                        CornerRadius="6" Padding="10,5" VerticalAlignment="Center" Margin="4,0,0,0"
+                                                        Background="Transparent" BorderThickness="0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#x1F504;" FontSize="11"
+                                                                   Foreground="{DynamicResource ThTxt2}" Margin="0,0,5,0"
+                                                                   VerticalAlignment="Center"/>
+                                                        <TextBlock Text="Refresh" FontSize="11" FontWeight="Medium"
+                                                                   Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Name="SyncDeviceBtn" Cursor="Hand"
+                                                        CornerRadius="6" Padding="10,5" VerticalAlignment="Center" Margin="4,0,0,0"
+                                                        Background="Transparent" BorderThickness="0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#x21BB;" FontSize="13" FontWeight="SemiBold"
+                                                                   Foreground="{DynamicResource ThTxt2}" Margin="0,0,5,0"
+                                                                   VerticalAlignment="Center"/>
+                                                        <TextBlock Text="Sync" FontSize="11" FontWeight="Medium"
+                                                                   Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Border>
-                                    <Border Name="ExportPdfBtn" Cursor="Hand"
-                                            CornerRadius="6" Padding="14,7" VerticalAlignment="Center" Margin="6,2,0,0"
-                                            Background="{DynamicResource ThHover}" BorderBrush="{DynamicResource ThBorder}"
-                                            BorderThickness="1">
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="&#x1F4C4;" FontSize="13"
-                                                       Foreground="{DynamicResource ThTxt2}" Margin="0,0,7,0"
-                                                       VerticalAlignment="Center"/>
-                                            <TextBlock Text="Export PDF" FontSize="13" FontWeight="Medium"
-                                                       Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                                    <!-- Remote Actions group -->
+                                    <Border CornerRadius="8" BorderBrush="{DynamicResource ThBorder}" BorderThickness="1"
+                                            Background="{DynamicResource ThSurfaceAlt}" Padding="12,8">
+                                        <StackPanel>
+                                            <TextBlock Text="REMOTE ACTIONS" FontSize="10" FontWeight="Bold"
+                                                       Foreground="{DynamicResource ThTxt3}" Margin="0,0,0,6"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border Name="FreshStartBtn" Cursor="Hand"
+                                                        CornerRadius="6" Padding="10,5" VerticalAlignment="Center"
+                                                        Background="Transparent" BorderThickness="0">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="&#x267B;" FontSize="11"
+                                                                   Foreground="{DynamicResource ThTxt2}" Margin="0,0,5,0"
+                                                                   VerticalAlignment="Center"/>
+                                                        <TextBlock Text="Fresh Start" FontSize="11" FontWeight="Medium"
+                                                                   Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Border>
                                 </StackPanel>
-                            </DockPanel>
+                                <Border Grid.Column="2" Name="ExportPdfBtn" Cursor="Hand"
+                                        CornerRadius="6" Padding="10,5" VerticalAlignment="Center" Margin="6,0,0,0"
+                                        Background="{DynamicResource ThHover}" BorderBrush="{DynamicResource ThBorder}"
+                                        BorderThickness="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="&#x1F4C4;" FontSize="11"
+                                                   Foreground="{DynamicResource ThTxt2}" Margin="0,0,5,0"
+                                                   VerticalAlignment="Center"/>
+                                        <TextBlock Text="Export PDF" FontSize="11" FontWeight="Medium"
+                                                   Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                            </Grid>
                             <TextBlock Name="DetailSubtitle" FontSize="12"
                                        Foreground="{DynamicResource ThTxt3}" Margin="0,0,0,16"/>
                         </StackPanel>
@@ -413,10 +449,11 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                 </Border>
                                 <Border Name="TabGroupsBtn" Cursor="Hand" Padding="12,8"
                                         Background="Transparent" CornerRadius="6,6,0,0"
-                                        BorderBrush="Transparent" BorderThickness="0,0,0,2">
+                                        BorderBrush="Transparent" BorderThickness="0,0,0,2" Margin="0,0,4,0">
                                     <TextBlock Text="Groups" FontSize="13" FontWeight="Medium"
                                                Foreground="{DynamicResource ThTxt3}"/>
                                 </Border>
+
                             </StackPanel>
 
                             <Border Grid.Row="1" Height="1" Background="{DynamicResource ThBorder}" Margin="0,0,0,16"/>
@@ -500,7 +537,7 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                                                FontSize="12" Foreground="#9CA3AF" VerticalAlignment="Center"/>
                                                 </Grid>
                                                 <!-- Defender / AV -->
-                                                <Grid Margin="0,0,0,8">
+                                                <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="14"/>
                                                         <ColumnDefinition Width="90"/>
@@ -511,20 +548,6 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                                     <TextBlock Grid.Column="1" Text="Defender / AV" FontSize="12"
                                                                Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
                                                     <TextBlock Grid.Column="2" Name="HthDefenderVal" Text="&#x2014;"
-                                                               FontSize="12" Foreground="#9CA3AF" VerticalAlignment="Center"/>
-                                                </Grid>
-                                                <!-- Intune License -->
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="14"/>
-                                                        <ColumnDefinition Width="90"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <TextBlock Name="HthLicenseIcon" Text="&#x25CF;" FontSize="9"
-                                                               Foreground="#9CA3AF" VerticalAlignment="Center"/>
-                                                    <TextBlock Grid.Column="1" Text="License" FontSize="12"
-                                                               Foreground="{DynamicResource ThTxt2}" VerticalAlignment="Center"/>
-                                                    <TextBlock Grid.Column="2" Name="HthLicenseVal" Text="&#x2014;"
                                                                FontSize="12" Foreground="#9CA3AF" VerticalAlignment="Center"/>
                                                 </Grid>
                                             </StackPanel>
@@ -550,6 +573,9 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -601,29 +627,65 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                                FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"
                                                TextWrapping="Wrap"/>
 
-                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Enrollment Profile"
+                                    <TextBlock Grid.Row="6" Grid.Column="0" Text="Installed Enrollment Profile"
                                                FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
                                                Margin="0,0,0,18"/>
                                     <TextBlock Grid.Row="6" Grid.Column="1" Name="ValEnrollProfile"
                                                FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"
                                                TextWrapping="Wrap"/>
 
-                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Last Enrolled"
+                                    <TextBlock Grid.Row="7" Grid.Column="0" Text="Assigned Enrollment Profile"
                                                FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
                                                Margin="0,0,0,18"/>
-                                    <TextBlock Grid.Row="7" Grid.Column="1" Name="ValLastEnrolled"
+                                    <TextBlock Grid.Row="7" Grid.Column="1" Name="ValAssignedEnrollProfile"
+                                               FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"
+                                               TextWrapping="Wrap"/>
+
+                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Autopilot Group Tag"
+                                               FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
+                                               Margin="0,0,0,18" VerticalAlignment="Center"/>
+                                    <StackPanel Grid.Row="8" Grid.Column="1" Orientation="Horizontal"
+                                                Margin="0,0,0,18" VerticalAlignment="Center">
+                                        <TextBlock Name="ValGroupTag"
+                                                   FontSize="13" Foreground="{DynamicResource ThTxt1}"
+                                                   TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                        <Border Name="GroupTagStatus" CornerRadius="4"
+                                                Padding="6,2" Margin="8,0,0,0"
+                                                VerticalAlignment="Center" Visibility="Collapsed">
+                                            <TextBlock Name="GroupTagStatusText" FontSize="10"
+                                                       FontWeight="SemiBold"/>
+                                        </Border>
+                                        <Border Name="ChangeGroupTagBtn" Cursor="Hand"
+                                                CornerRadius="4" Padding="8,2" Margin="10,0,0,0"
+                                                Background="#EEF2FF" VerticalAlignment="Center">
+                                            <TextBlock Text="Change" FontSize="11" FontWeight="Medium"
+                                                       Foreground="#5B5FC7"/>
+                                        </Border>
+                                    </StackPanel>
+
+                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Last Enrolled"
+                                               FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
+                                               Margin="0,0,0,18"/>
+                                    <TextBlock Grid.Row="9" Grid.Column="1" Name="ValLastEnrolled"
                                                FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"/>
 
-                                    <TextBlock Grid.Row="8" Grid.Column="0" Text="Last Password Change"
+                                    <TextBlock Grid.Row="10" Grid.Column="0" Text="Last Password Change"
                                                FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
                                                Margin="0,0,0,18"/>
-                                    <TextBlock Grid.Row="8" Grid.Column="1" Name="ValLastPasswordChange"
+                                    <TextBlock Grid.Row="10" Grid.Column="1" Name="ValLastPasswordChange"
                                                FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"/>
 
-                                    <TextBlock Grid.Row="9" Grid.Column="0" Text="Defender / AV"
+                                    <TextBlock Grid.Row="11" Grid.Column="0" Text="BIOS / UEFI Version"
                                                FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
                                                Margin="0,0,0,18"/>
-                                    <TextBlock Grid.Row="9" Grid.Column="1" Name="ValDefenderStatus"
+                                    <TextBlock Grid.Row="11" Grid.Column="1" Name="ValBiosVersion"
+                                               FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"
+                                               TextWrapping="Wrap"/>
+
+                                    <TextBlock Grid.Row="12" Grid.Column="0" Text="Defender / AV"
+                                               FontSize="13" Foreground="{DynamicResource ThTxt5}" FontWeight="Medium"
+                                               Margin="0,0,0,18"/>
+                                    <TextBlock Grid.Row="12" Grid.Column="1" Name="ValDefenderStatus"
                                                FontSize="13" Foreground="{DynamicResource ThTxt1}" Margin="0,0,0,18"
                                                TextWrapping="Wrap"/>
 
@@ -871,6 +933,8 @@ Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
                                     </StackPanel>
                                 </ScrollViewer>
                             </Grid>
+
+
                         </Grid>
                     </Grid>
                 </Grid>
@@ -943,22 +1007,22 @@ $ui = @{}
     'UserPanel','UserList',
     'DevicePanel','DeviceHeader','DeviceList',
     'EmptyState','LoadingState','DetailPanel',
-    'DetailTitle','DetailSubtitle','SyncDeviceBtn','ExportPdfBtn','RefreshDeviceBtn',
+    'DetailTitle','DetailSubtitle','RefreshBtn','FreshStartBtn','ExportPdfBtn',
     'ValDeviceName','ValOSVersion','ValOSBuild','ValLastLogon',
-    'ValPrimaryUser','ValAllUsers','ValEnrollProfile','ValLastEnrolled','ValLastPasswordChange',
+    'ValPrimaryUser','ValAllUsers','ValEnrollProfile','ValAssignedEnrollProfile','ValGroupTag','GroupTagStatus','GroupTagStatusText','ChangeGroupTagBtn','ValLastEnrolled','ValLastPasswordChange','ValBiosVersion',
     'HealthScoreBadge','HealthScoreText','HealthScoreLabel',
     'HthCompliantIcon','HthCompliantVal',
     'HthEncryptedIcon','HthEncryptedVal',
     'HthSyncIcon','HthSyncVal',
     'HthMgmtIcon','HthMgmtVal',
     'HthDefenderIcon','HthDefenderVal',
-    'HthLicenseIcon','HthLicenseVal',
     'ValDefenderStatus',
     'TabInfoBtn','TabAppsBtn','TabComplianceBtn','TabSecurityBtn','TabGroupsBtn',
     'TabInfoPanel','TabAppsPanel','TabCompliancePanel','TabSecurityPanel','TabGroupsPanel',
     'GroupsSearchBox','GroupsActiveStatus',
     'GrpSubDeviceBtn','GrpSubUserBtn','GrpSubDevicePanel','GrpSubUserPanel',
     'GroupsDeviceList','GroupsUserList','GroupsDeviceStatus','GroupsUserStatus',
+
     'AppsList','AppsStatus','AppsSearchBox','AppsToggleHiddenBtn','AppsToggleHiddenText',
     'ComplianceList','ComplianceStatus','DeviceComplianceBadge','DeviceComplianceText',
     'CompSubOverviewBtn','CompSubPoliciesBtn','CompSubOverviewPanel','CompSubPoliciesPanel',
@@ -1165,49 +1229,17 @@ function Update-HealthCard {
     $ui['HthDefenderVal'].Text        = $vt
     $ui['HthDefenderVal'].Foreground  = $bc.ConvertFrom($vc)
 
-    # Signal 6: Intune License
-    $upn = $dev.userPrincipalName
-    if ($upn) {
-        try {
-            $licResp = Invoke-MgGraphRequest -Uri "v1.0/users/$upn/licenseDetails" -Method GET
-            $licDetails = if ($licResp.value) { $licResp.value } else { @() }
-            # Collect all service plans across all assigned licenses
-            $allPlans = @()
-            foreach ($lic in $licDetails) {
-                if ($lic.servicePlans) { $allPlans += $lic.servicePlans }
-            }
-            # Match by name (INTUNE_A, INTUNE_P2, etc.) or well-known Intune Plan 1 GUID
-            $intunePlans = $allPlans | Where-Object {
-                $_.servicePlanName -match 'INTUNE' -or
-                $_.servicePlanId -eq 'c1ec4a95-1f05-45b3-a911-aa3fa01094f5'
-            }
-            if ($intunePlans) {
-                $ic = $colGreen; $vt = 'Licensed'; $vc = $colGreen; $score++
-            } else {
-                $ic = $colRed; $vt = 'No Intune Plan'; $vc = $colRed
-            }
-        } catch {
-            $ic = $colGray; $vt = 'Unable to check'; $vc = $colGray
-        }
-    } else {
-        $ic = $colGray; $vt = 'No user assigned'; $vc = $colGray
-    }
-    $ui['HthLicenseIcon'].Foreground = $bc.ConvertFrom($ic)
-    $ui['HthLicenseVal'].Text        = $vt
-    $ui['HthLicenseVal'].Foreground  = $bc.ConvertFrom($vc)
-
-    # Overall score badge (out of 6)
+    # Overall score badge (out of 5)
     $badgeCfg = switch ($score) {
-        6 { @{ Bg='#16A34A'; Label='Healthy'  } }
-        5 { @{ Bg='#2563EB'; Label='Good'     } }
-        4 { @{ Bg='#D97706'; Label='Fair'     } }
+        5 { @{ Bg='#16A34A'; Label='Healthy'  } }
+        4 { @{ Bg='#2563EB'; Label='Good'     } }
         3 { @{ Bg='#D97706'; Label='Fair'     } }
         2 { @{ Bg='#DC2626'; Label='Poor'     } }
         1 { @{ Bg='#991B1B'; Label='Critical' } }
         0 { @{ Bg='#991B1B'; Label='Critical' } }
     }
     $ui['HealthScoreBadge'].Background = $bc.ConvertFrom($badgeCfg.Bg)
-    $ui['HealthScoreText'].Text        = "$score/6"
+    $ui['HealthScoreText'].Text        = "$score/5"
     $ui['HealthScoreLabel'].Text       = $badgeCfg.Label
 }
 
@@ -1290,6 +1322,7 @@ function Set-Theme ([bool]$dark) {
 $script:currentDeviceId         = $null
 $script:currentAadDeviceId      = $null
 $script:currentPrimaryUpn       = $null
+$script:currentAutopilotId      = $null
 $script:deviceComplianceState   = $null
 $script:deviceLastSync          = $null
 $script:deviceGracePeriodExpiry = $null
@@ -1299,7 +1332,6 @@ $script:securityLoaded          = $false
 $script:groupsLoaded            = $false
 $script:deviceIsEncrypted       = $null
 $script:isDarkMode              = $false
-$script:lastPdfPath             = $null
 
 # ═══════════════════════════════════════════════════════════
 #  TAB SWITCHING
@@ -1387,7 +1419,7 @@ function Load-DeviceApps ([string]$deviceId) {
     $packagePattern2 = '^Microsoft\.\w+'     # matches Microsoft.Anything
     $packagePattern3 = '^MicrosoftWindows\.'  # matches MicrosoftWindows.Anything
     $packagePattern4 = '^Windows\.'           # matches Windows.Anything
-    $packagePattern5 = '^MSIX\\\\|^ms-resource:'  # MSIX paths or resource refs
+    $packagePattern5 = '^MSIX\\|^ms-resource:'    # MSIX paths or resource refs
 
     # Detected apps (apps actually found on the device)
     $uri = "https://graph.microsoft.com/beta/deviceManagement/managedDevices/${deviceId}/detectedApps?`$top=500"
@@ -2310,27 +2342,37 @@ $ui['LoginButton'].Add_Click({
     # ── Sign in ──
     Show-Overlay 'Opening browser for sign-in...'
     try {
-        $ctx = Get-MgContext -ErrorAction SilentlyContinue
-        if (-not $ctx) {
-            # Run Connect-MgGraph in a background runspace so the browser
-            # popup can complete without the WPF UI thread blocking it.
-            $rs = [runspacefactory]::CreateRunspace()
-            $rs.Open()
-            $ps = [powershell]::Create().AddScript({
-                Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
-                Connect-MgGraph -Scopes @(
-                    'DeviceManagementManagedDevices.Read.All',
-                    'DeviceManagementManagedDevices.PrivilegedOperations.All',
-                    'User.Read.All',
-                    'DeviceManagementServiceConfig.Read.All',
-                    'DeviceLocalCredential.Read.All',
-                    'BitlockerKey.ReadBasic.All',
-                    'BitlockerKey.Read.All',
-                    'Organization.Read.All'
-                ) -NoWelcome -ErrorAction Stop
-            })
-            $ps.Runspace = $rs
-            $handle = $ps.BeginInvoke()
+        # Run Connect-MgGraph in a background runspace so the browser
+        # popup can complete without the WPF UI thread blocking it.
+        # Disconnect inside the same runspace so the token cache is cleared
+        # before the new Connect — avoids reuse of a cached session with missing scopes.
+        # Clear the entire .IdentityService folder so stale PIM/role tokens are not
+        # silently reused after a privilege change (e.g. PIM activation).
+        $identityServiceDir = Join-Path $env:LOCALAPPDATA '.IdentityService'
+        if (Test-Path $identityServiceDir) {
+            try { Remove-Item $identityServiceDir -Recurse -Force -ErrorAction SilentlyContinue } catch {}
+        }
+
+        $rs = [runspacefactory]::CreateRunspace()
+        $rs.Open()
+        $ps = [powershell]::Create().AddScript({
+            Import-Module Microsoft.Graph.Authentication -ErrorAction Stop
+            try { Disconnect-MgGraph -ErrorAction Stop } catch {}
+            Connect-MgGraph -TenantId 'organizations' -Scopes @(
+                'DeviceManagementManagedDevices.ReadWrite.All',
+                'DeviceManagementManagedDevices.PrivilegedOperations.All',
+                'User.Read.All',
+                'DeviceManagementServiceConfig.ReadWrite.All',
+                'DeviceLocalCredential.Read.All',
+                'BitlockerKey.ReadBasic.All',
+                'BitlockerKey.Read.All',
+                'Organization.Read.All',
+                'GroupMember.Read.All',
+                'Device.Read.All'
+            ) -NoWelcome -ErrorAction Stop
+        })
+        $ps.Runspace = $rs
+        $handle = $ps.BeginInvoke()
 
             # Keep the WPF dispatcher alive while waiting
             while (-not $handle.IsCompleted) {
@@ -2338,15 +2380,26 @@ $ui['LoginButton'].Add_Click({
                 Start-Sleep -Milliseconds 100
             }
 
-            # Collect result / errors
+            # Collect result / errors — skip errors caused only by Disconnect having no session,
+            # and skip informational scope-warning records emitted by Connect-MgGraph on success
             $ps.EndInvoke($handle)
-            if ($ps.HadErrors) {
-                $errMsg = ($ps.Streams.Error | ForEach-Object { $_.ToString() }) -join "`n"
+            $realErrors = $ps.Streams.Error | Where-Object {
+                $msg = if ($_.Exception.Message) { $_.Exception.Message } else { $_.ToString() }
+                $msg -notmatch 'No application|sign out|not connected|no active|no connection'
+            }
+            if ($realErrors) {
+                $errParts = foreach ($e in $realErrors) {
+                    if ($e.Exception.Message)                    { $e.Exception.Message }
+                    elseif ($e.Exception.InnerException.Message) { $e.Exception.InnerException.Message }
+                    elseif ($e.ToString())                       { $e.ToString() }
+                    else                                         { $e.CategoryInfo.ToString() }
+                }
+                $errMsg = ($errParts | Where-Object { $_ }) -join "`n"
+                if (-not $errMsg) { $errMsg = 'Unknown sign-in error' }
                 throw $errMsg
             }
             $ps.Dispose()
             $rs.Close()
-        }
 
         $script:connected = $true
         $ui['StatusDot'].Fill       = [System.Windows.Media.BrushConverter]::new().ConvertFrom('#16A34A')
@@ -2360,14 +2413,35 @@ $ui['LoginButton'].Add_Click({
             }
         } catch { <# fall back to generic "Connected" #> }
 
+        # Verify critical scopes are present in the token
+        $required = @(
+            'DeviceManagementManagedDevices.ReadWrite.All',
+            'DeviceManagementManagedDevices.PrivilegedOperations.All'
+        )
+        $ctx = Get-MgContext
+        $grantedScopes = $ctx.Scopes
+        $missing = $required | Where-Object { $_ -notin $grantedScopes }
+        if ($missing) {
+            [System.Windows.MessageBox]::Show(
+                "Signed in, but the following permissions were not consented:`n`n$($missing -join "`n")`n`nThis can happen when an admin has not granted tenant-wide consent, or the token cache held an old session.`n`nThe cache has been cleared — please sign out and sign in again to re-consent.",
+                'Missing Permissions',
+                [System.Windows.MessageBoxButton]::OK,
+                [System.Windows.MessageBoxImage]::Warning
+            ) | Out-Null
+        }
+
         $ui['StatusText'].Text      = $tenantName
         $ui['LoginButton'].Content  = 'Sign Out'
         $ui['SearchBox'].IsEnabled  = $true
         $ui['SearchButton'].IsEnabled = $true
         $ui['SearchHint'].Text      = 'Search by name, email, or device name'
     } catch {
-        [System.Windows.MessageBox]::Show(
-            "Sign-in failed:`n$($_.Exception.Message)", "Authentication Error", "OK", "Error") | Out-Null
+        $msg = $_.Exception.Message
+        # Silently ignore user-cancelled authentication — not an error
+        if ($msg -notmatch 'cancel|abort|user canceled|User canceled') {
+            [System.Windows.MessageBox]::Show(
+                "Sign-in failed:`n$msg", "Authentication Error", "OK", "Error") | Out-Null
+        }
     } finally {
         Hide-Overlay
     }
@@ -2526,18 +2600,15 @@ $ui['UserList'].Add_SelectionChanged({
 })
 
 # ═══════════════════════════════════════════════════════════
-#  DEVICE SELECTED → LOAD DETAILS
+#  LOAD DEVICE DETAILS (reusable)
 # ═══════════════════════════════════════════════════════════
-$ui['DeviceList'].Add_SelectionChanged({
-    $sel = $ui['DeviceList'].SelectedItem
-    if (-not $sel) { return }
-
+function Load-DeviceDetails ([string]$deviceId) {
     $ui['EmptyState'].Visibility   = 'Collapsed'
     $ui['DetailPanel'].Visibility  = 'Collapsed'
     $ui['LoadingState'].Visibility = 'Visible'
     Push-UI
 
-    $id = $sel.DeviceId
+    $id = $deviceId
 
     # ── Step 1: Core device via v1.0 (stable, no 500s) ──
     # Fetch without $select — avoids Bad Request from unsupported property names
@@ -2555,54 +2626,6 @@ $ui['DeviceList'].Add_SelectionChanged({
     if ($osBuild -match '^10\.0\.(\d+)') {
         $major = [int]$Matches[1]
         $osFriendly = if ($major -ge 22000) { 'Windows 11' } else { 'Windows 10' }
-    }
-
-    # Append patch month based on build + UBR lookup
-    if ($osBuild -match '^10\.0\.(\d+)\.(\d+)$') {
-        $baseBuild = [int]$Matches[1]
-        $ubr       = [int]$Matches[2]
-        # UBR thresholds → month for known Windows builds (Patch Tuesday CUs)
-        $patchMap = @{
-            # Windows 11 24H2
-            26100 = @(
-                @(2033,'Oct 2024'),@(2314,'Nov 2024'),@(2605,'Dec 2024'),
-                @(2894,'Jan 2025'),@(3194,'Feb 2025'),@(3476,'Mar 2025')
-            )
-            # Windows 11 23H2
-            22631 = @(
-                @(2361,'Sep 2023'),@(2506,'Oct 2023'),@(2715,'Nov 2023'),
-                @(2792,'Dec 2023'),@(2861,'Jan 2024'),@(3007,'Feb 2024'),
-                @(3155,'Mar 2024'),@(3296,'Apr 2024'),@(3447,'May 2024'),
-                @(3593,'Jun 2024'),@(3737,'Jul 2024'),@(3880,'Aug 2024'),
-                @(4169,'Sep 2024'),@(4317,'Oct 2024'),@(4460,'Nov 2024'),
-                @(4602,'Dec 2024'),@(4751,'Jan 2025'),@(4890,'Feb 2025'),
-                @(5039,'Mar 2025')
-            )
-            # Windows 11 22H2 (shares UBRs with 23H2)
-            22621 = @(
-                @(2361,'Sep 2023'),@(2506,'Oct 2023'),@(2715,'Nov 2023'),
-                @(2792,'Dec 2023'),@(2861,'Jan 2024'),@(3007,'Feb 2024'),
-                @(3155,'Mar 2024'),@(3296,'Apr 2024'),@(3447,'May 2024'),
-                @(3593,'Jun 2024'),@(3737,'Jul 2024'),@(3880,'Aug 2024'),
-                @(4169,'Sep 2024'),@(4317,'Oct 2024'),@(4460,'Nov 2024'),
-                @(4602,'Dec 2024'),@(4751,'Jan 2025'),@(4890,'Feb 2025'),
-                @(5039,'Mar 2025')
-            )
-            # Windows 10 22H2
-            19045 = @(
-                @(3930,'Jul 2024'),@(4780,'Aug 2024'),@(4894,'Sep 2024'),
-                @(5011,'Oct 2024'),@(5131,'Nov 2024'),@(5247,'Dec 2024'),
-                @(5371,'Jan 2025'),@(5487,'Feb 2025'),@(5608,'Mar 2025')
-            )
-        }
-        $entries = $patchMap[$baseBuild]
-        if ($entries) {
-            $patchMonth = $null
-            foreach ($e in $entries) {
-                if ($ubr -ge $e[0]) { $patchMonth = $e[1] }
-            }
-            if ($patchMonth) { $osBuild = "$osBuild ($patchMonth)" }
-        }
     }
 
     # ── Primary user (from device record) ──
@@ -2624,25 +2647,35 @@ $ui['DeviceList'].Add_SelectionChanged({
         $loggedOn = $null
     }
 
-    if ($loggedOn -and $loggedOn.Count -gt 0) {
-        $sorted = $loggedOn | Sort-Object { [datetime]$_.lastLogOnDateTime } -Descending
-        $resolved = @()
+    if ($loggedOn) {
+        # Ensure it's an array (single-item collections may unwrap)
+        $loggedOnList = @($loggedOn)
+        if ($loggedOnList.Count -gt 0) {
+            $sorted = $loggedOnList | Sort-Object { [datetime]$_.lastLogOnDateTime } -Descending
+            $resolved = @()
 
-        foreach ($entry in $sorted) {
-            $uid  = $entry.userId
-            $time = ([datetime]$entry.lastLogOnDateTime).ToString('yyyy-MM-dd HH:mm')
-            $name = $uid
-            try {
-                $uInfo = Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/v1.0/users/${uid}?`$select=displayName,userPrincipalName" -Method GET -ErrorAction SilentlyContinue
-                if ($uInfo) { $name = "$($uInfo.displayName) ($($uInfo.userPrincipalName))" }
-            } catch { <# SID or deleted user – keep raw id #> }
-            $resolved += [PSCustomObject]@{ Name = $name; Time = $time }
-        }
+            foreach ($entry in $sorted) {
+                $uid  = $entry.userId
+                $time = ([datetime]$entry.lastLogOnDateTime).ToString('yyyy-MM-dd HH:mm')
+                $name = $uid
+                try {
+                    $uInfo = Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/v1.0/users/${uid}?`$select=displayName,userPrincipalName" -Method GET -ErrorAction SilentlyContinue
+                    if ($uInfo) { $name = "$($uInfo.displayName) ($($uInfo.userPrincipalName))" }
+                } catch { <# SID or deleted user – keep raw id #> }
+                $resolved += [PSCustomObject]@{ Name = $name; Time = $time }
+            }
 
-        if ($resolved.Count -gt 0) {
-            $lastLogon    = "$($resolved[0].Name)`n$($resolved[0].Time)"
-            $allUsersText = ($resolved | ForEach-Object { "$($_.Name) - $($_.Time)" }) -join "`n"
+            if ($resolved.Count -gt 0) {
+                $lastLogon    = "$($resolved[0].Name)`n$($resolved[0].Time)"
+                $allUsersText = ($resolved | ForEach-Object { "$($_.Name) - $($_.Time)" }) -join "`n"
+            }
         }
+    }
+
+    # Fallback: if usersLoggedOn was empty, use the primary user from the device record
+    if ($lastLogon -eq 'N/A' -and $primaryUser -ne 'N/A') {
+        $lastLogon    = $primaryUser
+        $allUsersText = $primaryUser
     }
 
     # ── Enrolled date ──
@@ -2651,9 +2684,67 @@ $ui['DeviceList'].Add_SelectionChanged({
         $enrolled = ([datetime]$dev.enrolledDateTime).ToString('yyyy-MM-dd HH:mm')
     }
 
-    # ── Enrollment profile ──
-    # enrollmentProfileName is a standard v1.0 property
+    # ── Installed Enrollment profile (recorded at enrollment time) ──
     $enrollProfile = if ($dev.enrollmentProfileName) { $dev.enrollmentProfileName } else { 'N/A' }
+
+    # ── Assigned Enrollment Profile (current Autopilot deployment profile) ──
+    # Fetched after the Autopilot lookup below; initialise here.
+    $assignedEnrollProfile = 'N/A'
+
+    # ── Autopilot Group Tag ──
+    # $filter is not supported on this endpoint — page through all identities and match client-side.
+    # Use $top=500 and $select to minimise round-trips and payload size.
+    $groupTag = 'N/A'
+    $script:currentAutopilotId        = $null
+    $script:autopilotAssignmentStatus = $null
+    $script:autopilotProfileName      = $null
+
+    if ($dev.serialNumber) {
+        try {
+            $serial  = $dev.serialNumber.Trim()
+            $apMatch = $null
+            $apUri   = "https://graph.microsoft.com/v1.0/deviceManagement/windowsAutopilotDeviceIdentities?`$top=100"
+
+            while ($apUri -and -not $apMatch) {
+                $apPage  = Invoke-MgGraphRequest -Uri $apUri -Method GET -ErrorAction Stop
+                $apMatch = @($apPage.value) | Where-Object {
+                    $sn = if ($_['serialNumber']) { $_['serialNumber'].Trim() } else { '' }
+                    $sn -eq $serial
+                } | Select-Object -First 1
+                $apUri = if (-not $apMatch) { $apPage.'@odata.nextLink' } else { $null }
+            }
+
+            if ($apMatch -and $apMatch['id']) {
+                $script:currentAutopilotId        = $apMatch['id']
+                $groupTag                         = if ($apMatch['groupTag']) { $apMatch['groupTag'] } else { '(none)' }
+                $script:autopilotAssignmentStatus = $apMatch['deploymentProfileAssignmentStatus']
+                $script:autopilotProfileName      = if ($apMatch['deploymentProfileAssignedDateTime']) {
+                    'Assigned ' + ([datetime]$apMatch['deploymentProfileAssignedDateTime']).ToString('yyyy-MM-dd')
+                } else { $null }
+            }
+            # Fetch the currently assigned deployment profile name via the same
+            # Autopilot identity endpoint using $expand=deploymentProfile.
+            if ($script:currentAutopilotId) {
+                $apId = $script:currentAutopilotId
+                $assignedEnrollProfile = 'Not assigned'
+                try {
+                    $apDetail = Invoke-MgGraphRequest `
+                        -Uri "https://graph.microsoft.com/beta/deviceManagement/windowsAutopilotDeviceIdentities/$apId`?`$expand=deploymentProfile(`$select=displayName)" `
+                        -Method GET -ErrorAction Stop
+                    $profileName = if ($apDetail['deploymentProfile'] -and $apDetail['deploymentProfile']['displayName']) {
+                        $apDetail['deploymentProfile']['displayName']
+                    } else { $null }
+                    if ($profileName) { $assignedEnrollProfile = $profileName }
+                } catch { <# leave Not assigned if profile lookup fails #> }
+            }
+            # $apMatch null → device not Autopilot-registered → leave N/A
+        } catch {
+            $errLine  = $_.Exception.Message.Split([char]10)[0]
+            $groupTag = "Error: $errLine"
+            $script:currentAutopilotId        = $null
+            $script:autopilotAssignmentStatus = $null
+        }
+    }
 
     # ── Last password change (primary user's Azure AD password) ──
     $lastPwdChange = 'N/A'
@@ -2667,47 +2758,60 @@ $ui['DeviceList'].Add_SelectionChanged({
         } catch { <# permission not granted or user not found — leave N/A #> }
     }
 
-    # ── Defender / AV (windowsProtectionState via beta) ──
+    # ── BIOS / UEFI Version (hardwareInformation via beta, Windows only) ──
+    $biosVersion = 'N/A'
+    if ($dev.operatingSystem -match '(?i)windows') {
+        try {
+            $hwInfo = Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/beta/deviceManagement/managedDevices/${id}?`$select=hardwareInformation" -Method GET -ErrorAction Stop
+            # Use bracket notation — Invoke-MgGraphRequest returns nested objects as Hashtable
+            $hwBios = if ($hwInfo -and $hwInfo['hardwareInformation']) { $hwInfo['hardwareInformation']['systemManagementBIOSVersion'] } else { $null }
+            if ($hwBios) { $biosVersion = $hwBios }
+        } catch { <# beta endpoint or permission not available — leave N/A #> }
+    }
+
+    # ── Defender / AV (windowsProtectionState via beta, Windows only) ──
     $wps            = $null
     $defenderStatus = 'N/A'
-    try {
-        $wpsResp = Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/beta/deviceManagement/managedDevices/${id}/windowsProtectionState" -Method GET -ErrorAction Stop
-        if ($wpsResp) {
-            $wps = $wpsResp
+    if ($dev.operatingSystem -match '(?i)windows') {
+        try {
+            $wpsResp = Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/beta/deviceManagement/managedDevices/${id}/windowsProtectionState" -Method GET -ErrorAction Stop
+            if ($wpsResp) {
+                $wps = $wpsResp
 
-            # Safely extract booleans — Graph returns $null for unreported fields, not $false
-            $rtpProp = $wps.realTimeProtectionEnabled
-            $avProp  = $wps.antivirusEnabled          # may be $null on modern Defender reporting
-            $malProp = $wps.malwareProtectionEnabled  # more reliable fallback
-            $sigOld  = $wps.signatureUpdateOverdue -eq $true
+                # Safely extract booleans — Graph returns $null for unreported fields, not $false
+                $rtpProp = $wps.realTimeProtectionEnabled
+                $avProp  = $wps.antivirusEnabled          # may be $null on modern Defender reporting
+                $malProp = $wps.malwareProtectionEnabled  # more reliable fallback
+                $sigOld  = $wps.signatureUpdateOverdue -eq $true
 
-            # Treat both key protections as "not reported" if all are null
-            $hasData = ($null -ne $rtpProp) -or ($null -ne $avProp) -or ($null -ne $malProp)
-            $protOn  = ($rtpProp -eq $true)
-            $avOn    = ($avProp  -eq $true) -or ($malProp -eq $true)
+                # Treat both key protections as "not reported" if all are null
+                $hasData = ($null -ne $rtpProp) -or ($null -ne $avProp) -or ($null -ne $malProp)
+                $protOn  = ($rtpProp -eq $true)
+                $avOn    = ($avProp  -eq $true) -or ($malProp -eq $true)
 
-            $lastScan = if ($wps.lastReportedDateTime) {
-                ' · Last scan: ' + ([datetime]$wps.lastReportedDateTime).ToString('yyyy-MM-dd HH:mm')
-            } else { '' }
-            $sigDate = if ($wps.antivirusSignatureLastUpdateDateTime) {
-                ' · Sigs: ' + ([datetime]$wps.antivirusSignatureLastUpdateDateTime).ToString('yyyy-MM-dd')
-            } else { '' }
+                $lastScan = if ($wps.lastReportedDateTime) {
+                    ' · Last scan: ' + ([datetime]$wps.lastReportedDateTime).ToString('yyyy-MM-dd HH:mm')
+                } else { '' }
+                $sigDate = if ($wps.antivirusSignatureLastUpdateDateTime) {
+                    ' · Sigs: ' + ([datetime]$wps.antivirusSignatureLastUpdateDateTime).ToString('yyyy-MM-dd')
+                } else { '' }
 
-            if (-not $hasData) {
-                $defenderStatus = "Not reporting$lastScan"
-            } elseif ($protOn -and $avOn -and -not $sigOld) {
-                $defenderStatus = "Protected$sigDate$lastScan"
-            } elseif ($sigOld) {
-                $defenderStatus = "Signatures outdated$sigDate$lastScan"
-            } elseif (-not $protOn -and $null -ne $rtpProp) {
-                $defenderStatus = "Real-time protection disabled$lastScan"
-            } elseif (-not $avOn -and ($null -ne $avProp -or $null -ne $malProp)) {
-                $defenderStatus = "Antivirus disabled$lastScan"
-            } else {
-                $defenderStatus = "Needs attention$lastScan"
+                if (-not $hasData) {
+                    $defenderStatus = "Not reporting$lastScan"
+                } elseif ($protOn -and $avOn -and -not $sigOld) {
+                    $defenderStatus = "Protected$sigDate$lastScan"
+                } elseif ($sigOld) {
+                    $defenderStatus = "Signatures outdated$sigDate$lastScan"
+                } elseif (-not $protOn -and $null -ne $rtpProp) {
+                    $defenderStatus = "Real-time protection disabled$lastScan"
+                } elseif (-not $avOn -and ($null -ne $avProp -or $null -ne $malProp)) {
+                    $defenderStatus = "Antivirus disabled$lastScan"
+                } else {
+                    $defenderStatus = "Needs attention$lastScan"
+                }
             }
-        }
-    } catch { <# DeviceManagementManagedDevices.Read.All required; or non-Windows — leave N/A #> }
+        } catch { <# DeviceManagementManagedDevices.Read.All required; or endpoint not available — leave N/A #> }
+    }
 
     # ── Store device ID for lazy-loaded tabs ──
     $script:currentDeviceId    = $id
@@ -2734,9 +2838,56 @@ $ui['DeviceList'].Add_SelectionChanged({
     $ui['ValLastLogon'].Text     = $lastLogon
     $ui['ValPrimaryUser'].Text  = $primaryUser
     $ui['ValAllUsers'].Text      = $allUsersText
-    $ui['ValEnrollProfile'].Text       = $enrollProfile
+    $ui['ValEnrollProfile'].Text         = $enrollProfile
+    $ui['ValAssignedEnrollProfile'].Text = $assignedEnrollProfile
+    $ui['ValGroupTag'].Text              = $groupTag
+
+    # Show Autopilot assignment status badge
+    $bc = [System.Windows.Media.BrushConverter]::new()
+    if ($script:currentAutopilotId) {
+        $rawStatus = if ($script:autopilotAssignmentStatus) { $script:autopilotAssignmentStatus } else { 'unknown' }
+        $statusLabel = switch ($rawStatus) {
+            'assigned'                { 'Assigned' }
+            'assignedUnkownSyncState' { 'Assigned' }
+            'assignedInSync'          { 'Assigned (In Sync)' }
+            'assignedOutOfSync'       { 'Assigned (Out of Sync)' }
+            'notAssigned'             { 'Not Assigned' }
+            'pending'                 { 'Pending' }
+            'failed'                  { 'Failed' }
+            'unknown'                 { 'Unknown' }
+            default                   { $rawStatus }
+        }
+        $statusColor = switch ($rawStatus) {
+            'assigned'                { @{ Bg='#F0FDF4'; Fg='#16A34A' } }
+            'assignedUnkownSyncState' { @{ Bg='#F0FDF4'; Fg='#16A34A' } }
+            'assignedInSync'          { @{ Bg='#F0FDF4'; Fg='#16A34A' } }
+            'assignedOutOfSync'       { @{ Bg='#FEF3C7'; Fg='#D97706' } }
+            'pending'                 { @{ Bg='#FEF3C7'; Fg='#D97706' } }
+            'failed'                  { @{ Bg='#FEF2F2'; Fg='#DC2626' } }
+            'notAssigned'             { @{ Bg='#F3F4F6'; Fg='#6B7280' } }
+            default                   { @{ Bg='#F3F4F6'; Fg='#9CA3AF' } }
+        }
+        $statusTooltip = switch ($rawStatus) {
+            'assigned'                { "Profile assigned — device is ready for Autopilot enrollment with this group tag.$(if ($script:autopilotProfileName) { "`n$($script:autopilotProfileName)" })" }
+            'assignedUnkownSyncState' { "Profile assigned — waiting for device to confirm receipt.$(if ($script:autopilotProfileName) { "`n$($script:autopilotProfileName)" })" }
+            'assignedInSync'          { "Profile assigned and in sync — device is fully ready for Autopilot.$(if ($script:autopilotProfileName) { "`n$($script:autopilotProfileName)" })" }
+            'assignedOutOfSync'       { "Profile assigned but out of sync — sync the device to update.$(if ($script:autopilotProfileName) { "`n$($script:autopilotProfileName)" })" }
+            'notAssigned'             { 'No Autopilot profile is assigned. Verify the group tag matches a deployment profile.' }
+            'pending'                 { 'Intune is processing the group tag change. Sync the device and refresh to check again.' }
+            'failed'                  { 'Profile assignment failed. Verify the group tag matches an Autopilot deployment profile.' }
+            default                   { 'Assignment status could not be determined. Try refreshing the device details.' }
+        }
+        $ui['GroupTagStatus'].Background          = $bc.ConvertFrom($statusColor.Bg)
+        $ui['GroupTagStatusText'].Text            = $statusLabel
+        $ui['GroupTagStatusText'].Foreground      = $bc.ConvertFrom($statusColor.Fg)
+        $ui['GroupTagStatus'].ToolTip             = $statusTooltip
+        $ui['GroupTagStatus'].Visibility          = 'Visible'
+    } else {
+        $ui['GroupTagStatus'].Visibility = 'Collapsed'
+    }
     $ui['ValLastEnrolled'].Text        = $enrolled
     $ui['ValLastPasswordChange'].Text  = $lastPwdChange
+    $ui['ValBiosVersion'].Text         = $biosVersion
     $ui['ValDefenderStatus'].Text      = $defenderStatus
     Update-HealthCard $dev $wps
 
@@ -2775,6 +2926,102 @@ $ui['DeviceList'].Add_SelectionChanged({
 
     $ui['LoadingState'].Visibility = 'Collapsed'
     $ui['DetailPanel'].Visibility  = 'Visible'
+}
+
+# ═══════════════════════════════════════════════════════════
+#  DEVICE SELECTED → LOAD DETAILS
+# ═══════════════════════════════════════════════════════════
+$ui['DeviceList'].Add_SelectionChanged({
+    $sel = $ui['DeviceList'].SelectedItem
+    if (-not $sel) { return }
+    Load-DeviceDetails $sel.DeviceId
+})
+
+# ═══════════════════════════════════════════════════════════
+#  REFRESH BUTTON
+# ═══════════════════════════════════════════════════════════
+$ui['RefreshBtn'].Add_MouseLeftButtonDown({
+    if (-not $script:connected -or -not $script:currentDeviceId) { return }
+    Load-DeviceDetails $script:currentDeviceId
+})
+
+# ═══════════════════════════════════════════════════════════
+#  SYNC DEVICE BUTTON
+# ═══════════════════════════════════════════════════════════
+$ui['SyncDeviceBtn'].Add_MouseLeftButtonDown({
+    if (-not $script:connected -or -not $script:currentDeviceId) { return }
+    $id = $script:currentDeviceId
+
+    $sp      = $ui['SyncDeviceBtn'].Child
+    $labelTb = $sp.Children[1]
+
+    $labelTb.Text = 'Syncing…'
+    $ui['SyncDeviceBtn'].IsEnabled = $false
+    Push-UI
+
+    $syncOk = $false
+    $errDetail = ''
+    try {
+        # Use PSObject output so 204 No Content doesn't cause deserialisation errors,
+        # but exceptions (4xx/5xx) are still thrown with full response body.
+        Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/$id/syncDevice" `
+            -Method POST -ContentType 'application/json' -ErrorAction Stop | Out-Null
+        $syncOk = $true
+    } catch {
+        # Try to extract the structured Graph error message from the response body
+        $errDetail = $_.Exception.Message
+        $rawBody = ''
+        if ($_.ErrorDetails -and $_.ErrorDetails.Message) { $rawBody = $_.ErrorDetails.Message }
+        elseif ($_.Exception.Response) {
+            try {
+                $stream = $_.Exception.Response.Content.ReadAsStringAsync().Result
+                $rawBody = $stream
+            } catch {}
+        }
+        if ($rawBody) {
+            try {
+                $parsed = $rawBody | ConvertFrom-Json -ErrorAction SilentlyContinue
+                if ($parsed.error.message) { $errDetail = $parsed.error.message }
+                elseif ($parsed.error.code) { $errDetail = "$($parsed.error.code): $errDetail" }
+            } catch {}
+        }
+
+        # Append diagnostics for authentication / authorisation failures
+        if ($errDetail -match '401|Unauthorized') {
+            $errDetail += "`n`nYour session may have expired. Please sign out and sign back in."
+        } elseif ($errDetail -match '403|Forbidden|Authorization') {
+            try {
+                $ctx = Get-MgContext -ErrorAction SilentlyContinue
+                $relevantScopes = $ctx.Scopes | Where-Object { $_ -match 'DeviceManagement' }
+                $errDetail += "`n`nToken scopes (DeviceManagement):`n" + ($relevantScopes -join "`n")
+                $errDetail += "`n`nIf 'PrivilegedOperations.All' is missing, sign out and sign back in.`nIf it is present, an Intune RBAC role with 'Remote tasks' permission is required."
+            } catch {}
+        }
+    }
+
+    if ($syncOk) {
+        $labelTb.Text = 'Sent ✓'
+        $ui['SyncDeviceBtn'].IsEnabled = $true
+        $t = [System.Windows.Threading.DispatcherTimer]::new()
+        $t.Interval = [TimeSpan]::FromSeconds(3)
+        $t.Tag = $labelTb
+        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Sync'; $s.Stop() })
+        $t.Start()
+    } else {
+        $labelTb.Text = 'Error'
+        $ui['SyncDeviceBtn'].IsEnabled = $true
+        [System.Windows.MessageBox]::Show(
+            $errDetail,
+            'Sync Failed',
+            [System.Windows.MessageBoxButton]::OK,
+            [System.Windows.MessageBoxImage]::Warning
+        ) | Out-Null
+        $t = [System.Windows.Threading.DispatcherTimer]::new()
+        $t.Interval = [TimeSpan]::FromSeconds(4)
+        $t.Tag = $labelTb
+        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Sync'; $s.Stop() })
+        $t.Start()
+    }
 })
 
 # ═══════════════════════════════════════════════════════════
@@ -2786,13 +3033,16 @@ $ui['CheckPermsButton'].Add_Click({
 
     # ── Required permissions with descriptions ─────────────────────
     $requiredScopes = @(
-        [PSCustomObject]@{ Scope = 'DeviceManagementManagedDevices.Read.All'; Purpose = 'Read Intune device data, apps, compliance' }
-        [PSCustomObject]@{ Scope = 'User.Read.All';                           Purpose = 'Search Entra ID users by name/UPN/email' }
-        [PSCustomObject]@{ Scope = 'DeviceManagementServiceConfig.Read.All';  Purpose = 'Read enrollment configuration & profiles' }
-        [PSCustomObject]@{ Scope = 'DeviceLocalCredential.Read.All';          Purpose = 'Retrieve LAPS passwords for devices' }
-        [PSCustomObject]@{ Scope = 'BitlockerKey.ReadBasic.All';              Purpose = 'List BitLocker recovery key IDs' }
-        [PSCustomObject]@{ Scope = 'BitlockerKey.Read.All';                   Purpose = 'Reveal full BitLocker recovery key values' }
-        [PSCustomObject]@{ Scope = 'Organization.Read.All';                   Purpose = 'Display tenant name in the header' }
+        [PSCustomObject]@{ Scope = 'DeviceManagementManagedDevices.ReadWrite.All';        Purpose = 'Read device data, apps, compliance' }
+        [PSCustomObject]@{ Scope = 'DeviceManagementManagedDevices.PrivilegedOperations.All'; Purpose = 'Trigger remote actions (Sync, Fresh Start, etc.)' }
+        [PSCustomObject]@{ Scope = 'User.Read.All';                                       Purpose = 'Search Entra ID users by name/UPN/email' }
+        [PSCustomObject]@{ Scope = 'DeviceManagementServiceConfig.ReadWrite.All';         Purpose = 'Read/write enrollment config, Autopilot group tags' }
+        [PSCustomObject]@{ Scope = 'DeviceLocalCredential.Read.All';                      Purpose = 'Retrieve LAPS passwords for devices' }
+        [PSCustomObject]@{ Scope = 'BitlockerKey.ReadBasic.All';                          Purpose = 'List BitLocker recovery key IDs' }
+        [PSCustomObject]@{ Scope = 'BitlockerKey.Read.All';                               Purpose = 'Reveal full BitLocker recovery key values' }
+        [PSCustomObject]@{ Scope = 'Organization.Read.All';                               Purpose = 'Display tenant name in the header' }
+        [PSCustomObject]@{ Scope = 'GroupMember.Read.All';                                Purpose = 'Read device and user group memberships (Groups tab)' }
+        [PSCustomObject]@{ Scope = 'Device.Read.All';                                     Purpose = 'Resolve Azure AD device object for group lookups' }
     )
 
     # ── Determine which scopes are currently consented ───────────
@@ -2973,7 +3223,7 @@ $ui['CheckPermsButton'].Add_Click({
     [System.Windows.Controls.Grid]::SetRow($footerBorder, 1)
 
     $noteTb = [System.Windows.Controls.TextBlock]::new()
-    $noteTb.Text         = 'Permissions are requested during sign-in. If any are missing, sign out and sign in again to re-consent.'
+    $noteTb.Text         = "These are Graph API (OAuth) scopes only — all green means your token has the right permissions consented. Note: Intune remote actions (Sync, Fresh Start, etc.) also require the appropriate Intune RBAC role with 'Remote tasks' enabled, which is a separate check not shown here."
     $noteTb.FontSize     = 11
     $noteTb.Foreground   = $bc.ConvertFrom('#9CA3AF')
     $noteTb.TextWrapping = [System.Windows.TextWrapping]::Wrap
@@ -3029,58 +3279,355 @@ $ui['DarkModeToggle'].Add_MouseLeftButtonDown({
     Set-Theme -dark $script:isDarkMode
 })
 
-$ui['SyncDeviceBtn'].Add_MouseLeftButtonDown({
+# ═══════════════════════════════════════════════════════════
+#  ACTION BUTTON HOVER / PRESS FEEDBACK
+# ═══════════════════════════════════════════════════════════
+function Add-ButtonFeedback ([System.Windows.UIElement]$btn) {
+    $btn.Add_MouseEnter({
+        $bc = [System.Windows.Media.BrushConverter]::new()
+        $this.Background = if ($script:isDarkMode) { $bc.ConvertFrom('#3A3B4E') } else { $bc.ConvertFrom('#E8E9F0') }
+    })
+    $btn.Add_MouseLeave({
+        $this.Background = [System.Windows.Media.Brushes]::Transparent
+    })
+    $btn.Add_MouseLeftButtonDown({
+        $bc = [System.Windows.Media.BrushConverter]::new()
+        $this.Background = if ($script:isDarkMode) { $bc.ConvertFrom('#4A4B60') } else { $bc.ConvertFrom('#D5D7E0') }
+    }.GetNewClosure())
+    $btn.Add_MouseLeftButtonUp({
+        $bc = [System.Windows.Media.BrushConverter]::new()
+        $this.Background = if ($script:isDarkMode) { $bc.ConvertFrom('#3A3B4E') } else { $bc.ConvertFrom('#E8E9F0') }
+    }.GetNewClosure())
+}
+
+foreach ($btnName in @('RefreshBtn','SyncDeviceBtn','FreshStartBtn','ExportPdfBtn')) {
+    Add-ButtonFeedback $ui[$btnName]
+}
+
+# ═══════════════════════════════════════════════════════════
+#  FRESH START (cleanWindowsDevice)
+# ═══════════════════════════════════════════════════════════
+$ui['FreshStartBtn'].Add_MouseLeftButtonDown({
     if (-not $script:connected -or -not $script:currentDeviceId) { return }
     $id = $script:currentDeviceId
+    $deviceName = $ui['ValDeviceName'].Text
 
-    # Grab the two TextBlocks directly by index
-    $sp      = $ui['SyncDeviceBtn'].Child
+    # Confirm with user — custom dialog so we can label buttons Keep / Remove / Cancel
+    $dlgResult  = $null
+    $confirmDlg = [System.Windows.Window]::new()
+    $confirmDlg.Title               = 'Confirm Fresh Start'
+    $confirmDlg.Width               = 420
+    $confirmDlg.SizeToContent       = [System.Windows.SizeToContent]::Height
+    $confirmDlg.WindowStartupLocation = [System.Windows.WindowStartupLocation]::CenterOwner
+    $confirmDlg.Owner               = $window
+    $confirmDlg.ResizeMode          = [System.Windows.ResizeMode]::NoResize
+    $confirmDlg.Background          = $window.Resources['ThSurface']
+    $confirmDlg.FontFamily          = [System.Windows.Media.FontFamily]::new('Segoe UI')
+
+    $bc = [System.Windows.Media.BrushConverter]::new()
+    $dlgStack = [System.Windows.Controls.StackPanel]::new()
+    $dlgStack.Margin = [System.Windows.Thickness]::new(24, 20, 24, 20)
+
+    $dlgIcon = [System.Windows.Controls.TextBlock]::new()
+    $dlgIcon.Text = '⚠'
+    $dlgIcon.FontSize = 28
+    $dlgIcon.HorizontalAlignment = [System.Windows.HorizontalAlignment]::Center
+    $dlgIcon.Margin = [System.Windows.Thickness]::new(0, 0, 0, 10)
+    $dlgStack.Children.Add($dlgIcon) | Out-Null
+
+    $dlgTitle = [System.Windows.Controls.TextBlock]::new()
+    $dlgTitle.Text = "Fresh Start — $deviceName"
+    $dlgTitle.FontSize = 14
+    $dlgTitle.FontWeight = [System.Windows.FontWeights]::SemiBold
+    $dlgTitle.TextWrapping = [System.Windows.TextWrapping]::Wrap
+    $dlgTitle.HorizontalAlignment = [System.Windows.HorizontalAlignment]::Center
+    $dlgTitle.Margin = [System.Windows.Thickness]::new(0, 0, 0, 10)
+    $dlgTitle.SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'ThTxt1')
+    $dlgStack.Children.Add($dlgTitle) | Out-Null
+
+    $dlgBody = [System.Windows.Controls.TextBlock]::new()
+    $dlgBody.Text = "Fresh Start reinstalls Windows and removes OEM pre-installed apps. The device stays enrolled in Entra ID / Intune.`n`nWhat should happen to the user's personal files?"
+    $dlgBody.FontSize = 12
+    $dlgBody.TextWrapping = [System.Windows.TextWrapping]::Wrap
+    $dlgBody.Margin = [System.Windows.Thickness]::new(0, 0, 0, 20)
+    $dlgBody.SetResourceReference([System.Windows.Controls.TextBlock]::ForegroundProperty, 'ThTxt2')
+    $dlgStack.Children.Add($dlgBody) | Out-Null
+
+    $btnPanel = [System.Windows.Controls.StackPanel]::new()
+    $btnPanel.Orientation = [System.Windows.Controls.Orientation]::Horizontal
+    $btnPanel.HorizontalAlignment = [System.Windows.HorizontalAlignment]::Center
+
+    $keepBtn = [System.Windows.Controls.Button]::new()
+    $keepBtn.Content = 'Keep files'
+    $keepBtn.Width = 110
+    $keepBtn.Padding = [System.Windows.Thickness]::new(0, 8, 0, 8)
+    $keepBtn.Margin = [System.Windows.Thickness]::new(0, 0, 8, 0)
+    $keepBtn.Background = $bc.ConvertFrom('#5B5FC7')
+    $keepBtn.Foreground = [System.Windows.Media.Brushes]::White
+    $keepBtn.BorderThickness = [System.Windows.Thickness]::new(0)
+    $keepBtn.FontSize = 13
+    $keepBtn.FontWeight = [System.Windows.FontWeights]::SemiBold
+    $keepBtn.Cursor = [System.Windows.Input.Cursors]::Hand
+    $keepBtn.Add_Click({ $script:dlgResult = 'Keep'; $confirmDlg.Close() })
+    $btnPanel.Children.Add($keepBtn) | Out-Null
+
+    $removeBtn = [System.Windows.Controls.Button]::new()
+    $removeBtn.Content = 'Remove files'
+    $removeBtn.Width = 110
+    $removeBtn.Padding = [System.Windows.Thickness]::new(0, 8, 0, 8)
+    $removeBtn.Margin = [System.Windows.Thickness]::new(0, 0, 8, 0)
+    $removeBtn.Background = $bc.ConvertFrom('#DC2626')
+    $removeBtn.Foreground = [System.Windows.Media.Brushes]::White
+    $removeBtn.BorderThickness = [System.Windows.Thickness]::new(0)
+    $removeBtn.FontSize = 13
+    $removeBtn.FontWeight = [System.Windows.FontWeights]::SemiBold
+    $removeBtn.Cursor = [System.Windows.Input.Cursors]::Hand
+    $removeBtn.Add_Click({ $script:dlgResult = 'Remove'; $confirmDlg.Close() })
+    $btnPanel.Children.Add($removeBtn) | Out-Null
+
+    $cancelBtn = [System.Windows.Controls.Button]::new()
+    $cancelBtn.Content = 'Cancel'
+    $cancelBtn.Width = 80
+    $cancelBtn.Padding = [System.Windows.Thickness]::new(0, 8, 0, 8)
+    $cancelBtn.BorderThickness = [System.Windows.Thickness]::new(1)
+    $cancelBtn.FontSize = 13
+    $cancelBtn.Cursor = [System.Windows.Input.Cursors]::Hand
+    $cancelBtn.Add_Click({ $script:dlgResult = 'Cancel'; $confirmDlg.Close() })
+    $btnPanel.Children.Add($cancelBtn) | Out-Null
+
+    $dlgStack.Children.Add($btnPanel) | Out-Null
+    $confirmDlg.Content = $dlgStack
+
+    $script:dlgResult = 'Cancel'
+    $confirmDlg.ShowDialog() | Out-Null
+    if ($script:dlgResult -eq 'Cancel') { return }
+    $keepUserData = ($script:dlgResult -eq 'Keep')
+
+    $sp      = $ui['FreshStartBtn'].Child
     $labelTb = $sp.Children[1]
 
-    $labelTb.Text = 'Syncing…'
-    $ui['SyncDeviceBtn'].IsEnabled = $false
+    $labelTb.Text = 'Sending…'
+    $ui['FreshStartBtn'].IsEnabled = $false
     Push-UI
 
-    $syncOk = $false
+    $ok = $false
     $errDetail = ''
     try {
-        # syncDevice returns 204 No Content — OutputType None avoids deserialise errors
-        Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/v1.0/deviceManagement/managedDevices/$id/syncDevice" `
-            -Method POST -ContentType 'application/json' -OutputType HttpResponseMessage -ErrorAction Stop | Out-Null
-        $syncOk = $true
+        $body = @{ keepUserData = $keepUserData } | ConvertTo-Json
+        Invoke-MgGraphRequest -Uri "https://graph.microsoft.com/beta/deviceManagement/managedDevices/$id/cleanWindowsDevice" `
+            -Method POST -Body $body -ContentType 'application/json' -ErrorAction Stop | Out-Null
+        $ok = $true
     } catch {
         $errDetail = $_.Exception.Message
-        # Try to extract the inner Graph error message
-        if ($_.ErrorDetails -and $_.ErrorDetails.Message) {
+        $rawBody = ''
+        if ($_.ErrorDetails -and $_.ErrorDetails.Message) { $rawBody = $_.ErrorDetails.Message }
+        elseif ($_.Exception.Response) {
             try {
-                $parsed = $_.ErrorDetails.Message | ConvertFrom-Json -ErrorAction SilentlyContinue
+                $stream = $_.Exception.Response.Content.ReadAsStringAsync().Result
+                $rawBody = $stream
+            } catch {}
+        }
+        if ($rawBody) {
+            try {
+                $parsed = $rawBody | ConvertFrom-Json -ErrorAction SilentlyContinue
                 if ($parsed.error.message) { $errDetail = $parsed.error.message }
+                elseif ($parsed.error.code) { $errDetail = "$($parsed.error.code): $errDetail" }
+            } catch {}
+        }
+        # Append diagnostics for authentication / authorisation failures
+        if ($errDetail -match '401|Unauthorized') {
+            $errDetail += "`n`nYour session may have expired. Please sign out and sign back in."
+        } elseif ($errDetail -match '403|Forbidden|Authorization') {
+            try {
+                $ctx = Get-MgContext -ErrorAction SilentlyContinue
+                $relevantScopes = $ctx.Scopes | Where-Object { $_ -match 'DeviceManagement' }
+                $errDetail += "`n`nToken scopes (DeviceManagement):`n" + ($relevantScopes -join "`n")
+                $errDetail += "`n`nIf 'PrivilegedOperations.All' is missing, sign out and sign back in.`nIf it is present, an Intune RBAC role with 'Remote tasks' permission is required."
             } catch {}
         }
     }
 
-    if ($syncOk) {
+    if ($ok) {
         $labelTb.Text = 'Sent ✓'
-        $ui['SyncDeviceBtn'].IsEnabled = $true
+        $ui['FreshStartBtn'].IsEnabled = $true
         $t = [System.Windows.Threading.DispatcherTimer]::new()
         $t.Interval = [TimeSpan]::FromSeconds(3)
         $t.Tag = $labelTb
-        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Sync'; $s.Stop() })
+        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Fresh Start'; $s.Stop() })
         $t.Start()
     } else {
         $labelTb.Text = 'Error'
-        $ui['SyncDeviceBtn'].IsEnabled = $true
+        $ui['FreshStartBtn'].IsEnabled = $true
         [System.Windows.MessageBox]::Show(
             $errDetail,
-            'Sync Failed',
+            'Fresh Start Failed',
             [System.Windows.MessageBoxButton]::OK,
             [System.Windows.MessageBoxImage]::Warning
         ) | Out-Null
         $t = [System.Windows.Threading.DispatcherTimer]::new()
         $t.Interval = [TimeSpan]::FromSeconds(4)
         $t.Tag = $labelTb
-        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Sync'; $s.Stop() })
+        $t.Add_Tick({ param($s,$e) $s.Tag.Text = 'Fresh Start'; $s.Stop() })
         $t.Start()
+    }
+})
+
+# ═══════════════════════════════════════════════════════════
+#  CHANGE AUTOPILOT GROUP TAG
+# ═══════════════════════════════════════════════════════════
+$ui['ChangeGroupTagBtn'].Add_MouseLeftButtonDown({
+    if (-not $script:connected -or -not $script:currentAutopilotId) {
+        [System.Windows.MessageBox]::Show(
+            "No Autopilot identity found for this device.`nThe device may not be Autopilot-registered.",
+            'Cannot Change Group Tag', 'OK', 'Warning') | Out-Null
+        return
+    }
+
+    $currentTag = $ui['ValGroupTag'].Text
+
+    # ── Fetch all distinct group tags from the tenant ──
+    Show-Overlay 'Loading group tags…'
+    $allTags = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    try {
+        $uri = "https://graph.microsoft.com/v1.0/deviceManagement/windowsAutopilotDeviceIdentities?`$top=100"
+        while ($uri) {
+            $result = Invoke-MgGraphRequest -Uri $uri -Method GET -ErrorAction Stop
+            foreach ($item in $result.value) {
+                if ($item.groupTag -and $item.groupTag.Trim().Length -gt 0) {
+                    [void]$allTags.Add($item.groupTag.Trim())
+                }
+            }
+            $uri = $result.'@odata.nextLink'
+        }
+    } catch {
+        Hide-Overlay
+        [System.Windows.MessageBox]::Show(
+            "Failed to retrieve group tags:`n$($_.Exception.Message)",
+            'Error', 'OK', 'Error') | Out-Null
+        return
+    }
+    Hide-Overlay
+
+    if ($allTags.Count -eq 0) {
+        [System.Windows.MessageBox]::Show(
+            'No group tags found in the tenant.',
+            'No Group Tags', 'OK', 'Information') | Out-Null
+        return
+    }
+
+    $sortedTags = $allTags | Sort-Object
+
+    # ── Build selection dialog ──
+    $dlg = [System.Windows.Window]::new()
+    $dlg.Title  = 'Select Group Tag'
+    $dlg.Width  = 380
+    $dlg.Height = 480
+    $dlg.WindowStartupLocation = 'CenterOwner'
+    $dlg.Owner  = $window
+    $dlg.ResizeMode = 'NoResize'
+    $dlg.Background = $window.Resources['ThSurface']
+
+    $stack = [System.Windows.Controls.StackPanel]::new()
+    $stack.Margin = [System.Windows.Thickness]::new(20)
+
+    $header = [System.Windows.Controls.TextBlock]::new()
+    $header.Text = "Current tag: $currentTag"
+    $header.FontSize = 13
+    $header.Foreground = $window.Resources['ThTxt3']
+    $header.Margin = [System.Windows.Thickness]::new(0, 0, 0, 12)
+    $stack.Children.Add($header) | Out-Null
+
+    $label = [System.Windows.Controls.TextBlock]::new()
+    $label.Text = 'Select a new group tag:'
+    $label.FontSize = 13
+    $label.FontWeight = [System.Windows.FontWeights]::Medium
+    $label.Foreground = $window.Resources['ThTxt1']
+    $label.Margin = [System.Windows.Thickness]::new(0, 0, 0, 8)
+    $stack.Children.Add($label) | Out-Null
+
+    $listBox = [System.Windows.Controls.ListBox]::new()
+    $listBox.Height = 270
+    $listBox.FontSize = 13
+    $listBox.BorderBrush = $window.Resources['ThBorderSub']
+    $listBox.Background = $window.Resources['ThInputBg']
+    foreach ($tag in $sortedTags) {
+        $listBox.Items.Add($tag) | Out-Null
+    }
+    # Pre-select the current tag if it exists
+    $idx = [System.Array]::IndexOf($sortedTags, $currentTag)
+    if ($idx -ge 0) { $listBox.SelectedIndex = $idx }
+    $stack.Children.Add($listBox) | Out-Null
+
+    $btnPanel = [System.Windows.Controls.StackPanel]::new()
+    $btnPanel.Orientation = 'Horizontal'
+    $btnPanel.HorizontalAlignment = 'Right'
+    $btnPanel.Margin = [System.Windows.Thickness]::new(0, 14, 0, 0)
+
+    $cancelBtn = [System.Windows.Controls.Button]::new()
+    $cancelBtn.Content = 'Cancel'
+    $cancelBtn.Width = 80
+    $cancelBtn.Padding = [System.Windows.Thickness]::new(0, 6, 0, 6)
+    $cancelBtn.Margin = [System.Windows.Thickness]::new(0, 0, 8, 0)
+    $cancelBtn.Add_Click({ $dlg.DialogResult = $false; $dlg.Close() })
+    $btnPanel.Children.Add($cancelBtn) | Out-Null
+
+    $okBtn = [System.Windows.Controls.Button]::new()
+    $okBtn.Content = 'OK'
+    $okBtn.Width = 80
+    $okBtn.Padding = [System.Windows.Thickness]::new(0, 6, 0, 6)
+    $okBtn.IsDefault = $true
+    $okBtn.Add_Click({ $dlg.DialogResult = $true; $dlg.Close() })
+    $btnPanel.Children.Add($okBtn) | Out-Null
+
+    $stack.Children.Add($btnPanel) | Out-Null
+    $dlg.Content = $stack
+
+    $dlgResult = $dlg.ShowDialog()
+    if (-not $dlgResult -or $null -eq $listBox.SelectedItem) { return }
+
+    $newTag = $listBox.SelectedItem.ToString()
+    if ($newTag -eq $currentTag) { return }
+
+    # ── Confirmation dialog ──
+    $confirm = [System.Windows.MessageBox]::Show(
+        "Change group tag from '$currentTag' to '$newTag'?`n`nDevice: $($ui['ValDeviceName'].Text)",
+        'Confirm Group Tag Change',
+        [System.Windows.MessageBoxButton]::YesNo,
+        [System.Windows.MessageBoxImage]::Question
+    )
+    if ($confirm -ne 'Yes') { return }
+
+    # ── Apply the change via Graph API ──
+    Show-Overlay 'Updating group tag…'
+    $apId = $script:currentAutopilotId
+    try {
+        $body = @{ groupTag = $newTag } | ConvertTo-Json
+        Invoke-MgGraphRequest `
+            -Uri "https://graph.microsoft.com/v1.0/deviceManagement/windowsAutopilotDeviceIdentities/$apId/updateDeviceProperties" `
+            -Method POST -Body $body -ContentType 'application/json' -OutputType HttpResponseMessage -ErrorAction Stop | Out-Null
+        Hide-Overlay
+        $ui['ValGroupTag'].Text = $newTag
+        # Show "Pending sync" badge
+        $bcTag = [System.Windows.Media.BrushConverter]::new()
+        $ui['GroupTagStatus'].Background      = $bcTag.ConvertFrom('#FEF3C7')
+        $ui['GroupTagStatusText'].Text        = 'Pending sync'
+        $ui['GroupTagStatusText'].Foreground  = $bcTag.ConvertFrom('#D97706')
+        $ui['GroupTagStatus'].Visibility      = 'Visible'
+        [System.Windows.MessageBox]::Show(
+            "Group tag updated to '$newTag'.`nThe device may need to sync for the change to fully apply.",
+            'Group Tag Updated', 'OK', 'Information') | Out-Null
+    } catch {
+        Hide-Overlay
+        $errMsg = $_.Exception.Message
+        if ($_.ErrorDetails -and $_.ErrorDetails.Message) {
+            try {
+                $parsed = $_.ErrorDetails.Message | ConvertFrom-Json -ErrorAction SilentlyContinue
+                if ($parsed.error.message) { $errMsg = $parsed.error.message }
+            } catch {}
+        }
+        [System.Windows.MessageBox]::Show(
+            "Failed to update group tag:`n$errMsg",
+            'Update Failed', 'OK', 'Error') | Out-Null
     }
 })
 
@@ -3100,7 +3647,7 @@ function Export-DevicePdf {
     # Gather health card data from UI
     $healthScore = $ui['HealthScoreText'].Text
     $healthLabel = $ui['HealthScoreLabel'].Text
-    $healthBg    = ($ui['HealthScoreBadge'].Background).ToString()
+    $healthBg    = ($ui['HealthScoreBadge'].Background).ToString() -replace '^#FF','#'
 
     # Map icon colours → friendly CSS colour (WPF returns #AARRGGBB, so strip alpha)
     function Get-HealthColor($color) {
@@ -3119,7 +3666,6 @@ function Export-DevicePdf {
         'Last Sync'   = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>'
         'Management'  = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>'
         'Defender/AV' = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'
-        'License'     = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/><circle cx="16" cy="16" r="2"/></svg>'
     }
     $hthItems = @(
         @{ Label='Compliance';  Value=$ui['HthCompliantVal'].Text; Color=$ui['HthCompliantIcon'].Foreground.ToString() }
@@ -3127,7 +3673,6 @@ function Export-DevicePdf {
         @{ Label='Last Sync';   Value=$ui['HthSyncVal'].Text;      Color=$ui['HthSyncIcon'].Foreground.ToString() }
         @{ Label='Management';  Value=$ui['HthMgmtVal'].Text;      Color=$ui['HthMgmtIcon'].Foreground.ToString() }
         @{ Label='Defender/AV'; Value=$ui['HthDefenderVal'].Text;   Color=$ui['HthDefenderIcon'].Foreground.ToString() }
-        @{ Label='License';     Value=$ui['HthLicenseVal'].Text;    Color=$ui['HthLicenseIcon'].Foreground.ToString() }
     )
     $healthItemsHtml = ($hthItems | ForEach-Object {
         $hc = Get-HealthColor $_.Color
@@ -3151,9 +3696,12 @@ function Export-DevicePdf {
         @{ Label='Last Logged On User';  Value=$ui['ValLastLogon'].Text }
         @{ Label='Primary User';         Value=$ui['ValPrimaryUser'].Text }
         @{ Label='All Logged-In Users';  Value=$ui['ValAllUsers'].Text }
-        @{ Label='Enrollment Profile';   Value=$ui['ValEnrollProfile'].Text }
+        @{ Label='Installed Enrollment Profile'; Value=$ui['ValEnrollProfile'].Text }
+        @{ Label='Assigned Enrollment Profile';  Value=$ui['ValAssignedEnrollProfile'].Text }
+        @{ Label='Autopilot Group Tag';          Value=$ui['ValGroupTag'].Text }
         @{ Label='Last Enrolled';        Value=$ui['ValLastEnrolled'].Text }
         @{ Label='Last Password Change'; Value=$ui['ValLastPasswordChange'].Text }
+        @{ Label='BIOS / UEFI Version';  Value=$ui['ValBiosVersion'].Text }
         @{ Label='Defender / AV';        Value=$ui['ValDefenderStatus'].Text }
     )
     $propRows = ($props | ForEach-Object {
@@ -3194,59 +3742,60 @@ $appRows
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Device Report - $([System.Net.WebUtility]::HtmlEncode($deviceName))</title>
 <style>
-  @page { size: A4; margin: 18mm 16mm; }
+  @page { size: A4; margin: 10mm 12mm; }
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; color:#1A1B25; font-size:12px; line-height:1.5; background:#fff; }
+  body { font-family:'Segoe UI',system-ui,-apple-system,sans-serif; color:#1A1B25; font-size:11px; line-height:1.4; background:#fff; }
 
   /* ── Header ── */
-  .header { display:flex; align-items:center; gap:20px; margin-bottom:28px; padding-bottom:20px; border-bottom:2px solid #E5E7EB; }
+  .header { display:flex; align-items:center; gap:16px; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #E5E7EB; }
   .header-left { flex:1; }
-  .header-left h1 { font-size:26px; font-weight:700; color:#111827; margin-bottom:2px; letter-spacing:-0.5px; }
-  .header-left .subtitle { font-size:12px; color:#6B7280; }
-  .header-left .export-date { font-size:10px; color:#9CA3AF; margin-top:6px; }
+  .header-left h1 { font-size:22px; font-weight:700; color:#111827; margin-bottom:2px; letter-spacing:-0.5px; }
+  .header-left .subtitle { font-size:11px; color:#6B7280; }
+  .header-left .export-date { font-size:9px; color:#9CA3AF; margin-top:4px; }
 
   /* ── Health Card ── */
   .health-card {
     background: linear-gradient(135deg, #FAFBFC 0%, #F3F4F6 100%);
     border:1px solid #E5E7EB; border-radius:14px;
-    padding:20px 24px; width:100%; margin-bottom:28px;
+    padding:14px 18px; width:100%; margin-bottom:16px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    page-break-inside: avoid;
   }
-  .hc-top { display:flex; align-items:center; margin-bottom:20px; }
+  .hc-top { display:flex; align-items:center; margin-bottom:12px; }
   .hc-title-block { flex:1; }
   .hc-title { font-size:11px; font-weight:700; color:#6B7280; letter-spacing:1px; text-transform:uppercase; }
   .hc-subtitle { font-size:10px; color:#9CA3AF; margin-top:2px; }
 
   /* Circular score badge */
   .score-ring {
-    width:72px; height:72px; border-radius:50%;
+    width:60px; height:60px; border-radius:50%;
     background: ${healthBg};
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     color:white; box-shadow: 0 4px 12px rgba(0,0,0,0.12);
   }
-  .score-ring .score { font-size:24px; font-weight:800; line-height:1; }
+  .score-ring .score { font-size:20px; font-weight:800; line-height:1; }
   .score-ring .label { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; opacity:0.95; margin-top:2px; }
 
   /* Health items grid */
-  .hth-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; }
+  .hth-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px 16px; }
   .hth-item {
-    display:flex; align-items:center; gap:10px;
-    background:#fff; border:1px solid #E5E7EB; border-radius:10px;
-    padding:10px 14px;
+    display:flex; align-items:center; gap:8px;
+    background:#fff; border:1px solid #E5E7EB; border-radius:8px;
+    padding:6px 10px;
   }
   .hth-icon-circle {
-    width:32px; height:32px; border-radius:50%;
+    width:26px; height:26px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0;
   }
   .hth-info { display:flex; flex-direction:column; min-width:0; }
-  .hth-label { font-size:10px; font-weight:600; color:#6B7280; text-transform:uppercase; letter-spacing:0.3px; }
-  .hth-value { font-size:13px; font-weight:600; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .hth-label { font-size:9px; font-weight:600; color:#6B7280; text-transform:uppercase; letter-spacing:0.3px; }
+  .hth-value { font-size:11px; font-weight:600; margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
   /* ── Sections ── */
   .section-title {
-    font-size:14px; font-weight:700; color:#111827;
-    margin:28px 0 14px 0; padding-bottom:8px;
+    font-size:13px; font-weight:700; color:#111827;
+    margin:16px 0 8px 0; padding-bottom:6px;
     border-bottom:2px solid #E5E7EB;
     letter-spacing:-0.2px;
   }
@@ -3254,8 +3803,8 @@ $appRows
   /* ── Properties table ── */
   .props-table { width:100%; border-collapse:collapse; }
   .props-table tr:nth-child(even) { background:#FAFBFC; }
-  .prop-label { padding:10px 16px 10px 12px; font-weight:600; color:#6B7280; width:200px; vertical-align:top; font-size:11px; text-transform:uppercase; letter-spacing:0.3px; }
-  .prop-value { padding:10px 12px 10px 0; color:#111827; font-size:12px; }
+  .prop-label { padding:6px 12px 6px 8px; font-weight:600; color:#6B7280; width:180px; vertical-align:top; font-size:10px; text-transform:uppercase; letter-spacing:0.3px; }
+  .prop-value { padding:6px 8px 6px 0; color:#111827; font-size:11px; }
 
   /* ── Apps table ── */
   .apps-table { width:100%; border-collapse:collapse; border:1px solid #E5E7EB; border-radius:8px; overflow:hidden; }
@@ -3265,7 +3814,7 @@ $appRows
   .apps-table tr:hover { background:#F3F4F6; }
 
   /* ── Footer ── */
-  .footer { margin-top:36px; padding-top:14px; border-top:2px solid #E5E7EB; text-align:center; font-size:10px; color:#9CA3AF; }
+  .footer { margin-top:20px; padding-top:10px; border-top:2px solid #E5E7EB; text-align:center; font-size:9px; color:#9CA3AF; }
 </style></head><body>
 
 <!-- Header -->
@@ -3338,7 +3887,7 @@ $appsHtml
         Show-PdfProgress 'Launching browser renderer...' 50
         Sleep-UI 200
         $fileUri = ([System.Uri]::new($htmlPath)).AbsoluteUri
-        $argString = "--headless --disable-gpu --no-sandbox --run-all-compositor-stages-before-draw `"--print-to-pdf=$pdfPath`" --no-pdf-header-footer `"$fileUri`""
+        $argString = "--headless=new --disable-gpu --no-sandbox --disable-extensions --run-all-compositor-stages-before-draw `"--print-to-pdf=$pdfPath`" --no-pdf-header-footer `"$fileUri`""
         $psi = [System.Diagnostics.ProcessStartInfo]::new()
         $psi.FileName  = $browser
         $psi.Arguments = $argString
@@ -3357,11 +3906,20 @@ $appsHtml
         }
         if (-not $proc.HasExited) { $proc.Kill() }
 
+        # Brief wait for file system flush
+        Sleep-UI 600
+
         Show-PdfProgress 'Finalising...' 90
         Sleep-UI 400
 
-        if (Test-Path $pdfPath) {
-            $script:lastPdfPath = $pdfPath
+        # Retry check — file may appear after a short delay
+        $pdfExists = $false
+        for ($i = 0; $i -lt 5; $i++) {
+            if (Test-Path $pdfPath) { $pdfExists = $true; break }
+            Sleep-UI 300
+        }
+
+        if ($pdfExists) {
             Show-PdfProgress 'Done!' 100
             Sleep-UI 400
             Hide-Overlay
@@ -3386,20 +3944,6 @@ $appsHtml
 }
 
 $ui['ExportPdfBtn'].Add_MouseLeftButtonDown({ Export-DevicePdf })
-
-$ui['RefreshDeviceBtn'].Add_MouseLeftButtonDown({
-    if (-not $script:currentDeviceId) { return }
-    # Reset lazy-load flags so tabs re-fetch on next visit
-    $script:appsLoaded       = $false
-    $script:complianceLoaded = $false
-    $script:securityLoaded   = $false
-    $script:groupsLoaded     = $false
-    # Re-select the same device to trigger the full reload
-    $idx = $ui['DeviceList'].SelectedIndex
-    $ui['DeviceList'].SelectedIndex = -1
-    Push-UI
-    $ui['DeviceList'].SelectedIndex = $idx
-})
 
 # ═══════════════════════════════════════════════════════════
 #  LAUNCH
