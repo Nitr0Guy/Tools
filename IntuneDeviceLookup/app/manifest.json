@@ -2,7 +2,7 @@
     "name": "Intune Device Lookup",
     "short_name": "Intune Lookup",
     "description": "Scan barcodes or search to look up Intune-managed devices",
-    "start_url": "/",
+    "start_url": ".",
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#5B5FC7",

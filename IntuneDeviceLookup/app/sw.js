@@ -2,20 +2,20 @@
    Service Worker — cache-first for static, network-first for API
    ═══════════════════════════════════════════════════════ */
 
-const CACHE_NAME = 'intune-lookup-v3';
+const CACHE_NAME = 'intune-lookup-v4';
 const STATIC_ASSETS = [
-    '/',
-    '/index.html',
-    '/css/style.css',
-    '/js/app.js',
-    '/js/auth.js',
-    '/js/graph.js',
-    '/js/intune.js',
-    '/js/scanner.js',
-    '/js/msal-browser.min.js',
-    '/manifest.json',
-    '/icons/icon-192.png',
-    '/icons/icon-512.png',
+    './',
+    'index.html',
+    'css/style.css',
+    'js/app.js',
+    'js/auth.js',
+    'js/graph.js',
+    'js/intune.js',
+    'js/scanner.js',
+    'js/msal-browser.min.js',
+    'manifest.json',
+    'icons/icon-192.png',
+    'icons/icon-512.png',
 ];
 
 // Install — cache static assets
