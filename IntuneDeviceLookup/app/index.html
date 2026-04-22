@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#5B5FC7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Intune Lookup">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Intune Device Lookup</title>
+</head>
+<body>
+    <!-- ═══ SIGN-IN VIEW ═══ -->
+    <div id="view-signin" class="view">
+        <div class="signin-container">
+            <div class="signin-icon">⬡</div>
+            <h1>Intune Device Lookup</h1>
+            <p class="signin-subtitle">Sign in with your organization account to get started</p>
+            <button id="btn-signin" class="btn-primary btn-large">Sign In</button>
+        </div>
+    </div>
+
+    <!-- ═══ SCAN / SEARCH VIEW ═══ -->
+    <div id="view-scan" class="view hidden">
+        <header class="app-header">
+            <div class="header-left">
+                <span class="header-icon">⬡</span>
+                <span class="header-title">Intune Lookup</span>
+            </div>
+            <div class="header-right">
+                <span id="header-user" class="header-user"></span>
+            </div>
+        </header>
+
+        <div class="scan-content">
+            <!-- Mode toggle -->
+            <div class="mode-toggle">
+                <button id="mode-scan" class="mode-btn active">Scan</button>
+                <button id="mode-search" class="mode-btn">Search</button>
+            </div>
+
+            <!-- Scanner area -->
+            <div id="scanner-area" class="scanner-area">
+                <div id="scanner-reader"></div>
+                <div id="scanner-placeholder" class="scanner-placeholder">
+                    <span class="scanner-placeholder-icon">📷</span>
+                    <p>Tap to start camera</p>
+                </div>
+                <button id="btn-start-scanner" class="btn-primary btn-scanner-start">Start Scanner</button>
+                <button id="btn-stop-scanner" class="btn-secondary btn-scanner-stop hidden">Stop Scanner</button>
+            </div>
+
+            <!-- Search area -->
+            <div id="search-area" class="search-area hidden">
+                <div class="search-input-group">
+                    <input type="text" id="search-input" class="search-input"
+                           placeholder="Device name or serial number..." autocomplete="off" autocapitalize="none">
+                    <button id="btn-search" class="btn-primary">Search</button>
+                </div>
+            </div>
+
+            <!-- Status / scanned result -->
+            <div id="scan-status" class="scan-status"></div>
+
+            <!-- Search results list -->
+            <div id="search-results" class="search-results hidden">
+                <h3 class="results-title">Results</h3>
+                <ul id="results-list" class="results-list"></ul>
+            </div>
+        </div>
+
+        <!-- Bottom nav -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-view="scan">
+                <span class="nav-icon">⊞</span>
+                <span class="nav-label">Scan</span>
+            </button>
+            <button class="nav-btn" data-view="recent">
+                <span class="nav-icon">⏱</span>
+                <span class="nav-label">Recent</span>
+            </button>
+            <button class="nav-btn" data-view="account">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Account</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ═══ RECENT VIEW ═══ -->
+    <div id="view-recent" class="view hidden">
+        <header class="app-header">
+            <div class="header-left">
+                <span class="header-icon">⬡</span>
+                <span class="header-title">Recent Lookups</span>
+            </div>
+        </header>
+        <div class="recent-content">
+            <ul id="recent-list" class="results-list"></ul>
+            <p id="recent-empty" class="empty-state">No recent lookups</p>
+        </div>
+        <nav class="bottom-nav">
+            <button class="nav-btn" data-view="scan">
+                <span class="nav-icon">⊞</span>
+                <span class="nav-label">Scan</span>
+            </button>
+            <button class="nav-btn active" data-view="recent">
+                <span class="nav-icon">⏱</span>
+                <span class="nav-label">Recent</span>
+            </button>
+            <button class="nav-btn" data-view="account">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Account</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ═══ ACCOUNT VIEW ═══ -->
+    <div id="view-account" class="view hidden">
+        <header class="app-header">
+            <div class="header-left">
+                <span class="header-icon">⬡</span>
+                <span class="header-title">Account</span>
+            </div>
+        </header>
+        <div class="account-content">
+            <div class="account-card">
+                <p class="account-label">Signed in as</p>
+                <p id="account-name" class="account-name"></p>
+                <p id="account-upn" class="account-upn"></p>
+                <p id="account-tenant" class="account-tenant"></p>
+            </div>
+            <button id="btn-signout" class="btn-danger btn-large">Sign Out</button>
+        </div>
+        <nav class="bottom-nav">
+            <button class="nav-btn" data-view="scan">
+                <span class="nav-icon">⊞</span>
+                <span class="nav-label">Scan</span>
+            </button>
+            <button class="nav-btn" data-view="recent">
+                <span class="nav-icon">⏱</span>
+                <span class="nav-label">Recent</span>
+            </button>
+            <button class="nav-btn active" data-view="account">
+                <span class="nav-icon">👤</span>
+                <span class="nav-label">Account</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ═══ DEVICE DETAIL VIEW ═══ -->
+    <div id="view-device" class="view hidden">
+        <header class="app-header">
+            <button id="btn-back" class="btn-back">← Back</button>
+            <div class="header-left">
+                <span id="device-title" class="header-title"></span>
+            </div>
+        </header>
+
+        <div class="device-content">
+            <!-- Loading state -->
+            <div id="device-loading" class="loading-state">
+                <div class="spinner"></div>
+                <p>Loading device details...</p>
+            </div>
+
+            <!-- Device details (hidden until loaded) -->
+            <div id="device-details" class="hidden">
+                <!-- Health card -->
+                <div class="card health-card">
+                    <h3 class="card-title">Device Health</h3>
+                    <div class="health-grid">
+                        <div class="health-item">
+                            <span id="health-compliance-dot" class="health-dot"></span>
+                            <span class="health-label">Compliance</span>
+                            <span id="health-compliance" class="health-value">—</span>
+                        </div>
+                        <div class="health-item">
+                            <span id="health-encryption-dot" class="health-dot"></span>
+                            <span class="health-label">Encryption</span>
+                            <span id="health-encryption" class="health-value">—</span>
+                        </div>
+                        <div class="health-item">
+                            <span id="health-sync-dot" class="health-dot"></span>
+                            <span class="health-label">Last Sync</span>
+                            <span id="health-sync" class="health-value">—</span>
+                        </div>
+                        <div class="health-item">
+                            <span id="health-mgmt-dot" class="health-dot"></span>
+                            <span class="health-label">Management</span>
+                            <span id="health-mgmt" class="health-value">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Properties card -->
+                <div class="card">
+                    <h3 class="card-title">Device Properties</h3>
+                    <div class="prop-grid">
+                        <div class="prop-row"><span class="prop-label">Device Name</span><span id="prop-name" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">OS</span><span id="prop-os" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">OS Version</span><span id="prop-osver" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">Serial Number</span><span id="prop-serial" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">Manufacturer</span><span id="prop-manufacturer" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">Model</span><span id="prop-model" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">Primary User</span><span id="prop-user" class="prop-value">—</span></div>
+                        <div class="prop-row"><span class="prop-label">Enrolled</span><span id="prop-enrolled" class="prop-value">—</span></div>
+                    </div>
+                </div>
+
+                <!-- Autopilot card -->
+                <div class="card">
+                    <h3 class="card-title">Autopilot</h3>
+                    <div id="autopilot-loading" class="loading-inline">
+                        <div class="spinner-small"></div> Loading...
+                    </div>
+                    <div id="autopilot-details" class="hidden">
+                        <div class="prop-grid">
+                            <div class="prop-row">
+                                <span class="prop-label">Group Tag</span>
+                                <span class="prop-value-row">
+                                    <span id="prop-grouptag">—</span>
+                                    <button id="btn-change-grouptag" class="btn-inline">Change</button>
+                                </span>
+                            </div>
+                            <div class="prop-row"><span class="prop-label">Enrollment Profile</span><span id="prop-enrollprofile" class="prop-value">—</span></div>
+                            <div class="prop-row"><span class="prop-label">Profile Status</span><span id="prop-profilestatus" class="prop-value">—</span></div>
+                        </div>
+                    </div>
+                    <div id="autopilot-none" class="hidden">
+                        <p class="text-muted">This device is not Autopilot registered.</p>
+                    </div>
+                </div>
+
+                <!-- Actions card -->
+                <div class="card actions-card">
+                    <h3 class="card-title">Device Actions</h3>
+                    <div class="actions-grid">
+                        <button id="btn-sync" class="btn-action">
+                            <span class="action-icon">↻</span>
+                            <span>Sync</span>
+                        </button>
+                        <button id="btn-freshstart" class="btn-action btn-action-warn">
+                            <span class="action-icon">♻</span>
+                            <span>Fresh Start</span>
+                        </button>
+                        <button id="btn-wipe" class="btn-action btn-action-danger">
+                            <span class="action-icon">⚠</span>
+                            <span>Wipe</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ MODAL OVERLAY ═══ -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal" class="modal">
+            <h3 id="modal-title" class="modal-title"></h3>
+            <div id="modal-body" class="modal-body"></div>
+            <div id="modal-actions" class="modal-actions"></div>
+        </div>
+    </div>
+
+    <!-- ═══ TOAST ═══ -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Libraries -->
+    <script src="js/msal-browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+    <!-- App modules -->
+    <script src="js/auth.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="js/intune.js"></script>
+    <script src="js/scanner.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Service Worker registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>

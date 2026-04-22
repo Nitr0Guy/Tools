@@ -1,0 +1,13 @@
+{
+  "name": "intune-device-lookup",
+  "version": "1.0.0",
+  "description": "PWA for Intune device lookup via barcode scan or search",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -l 3000"
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^3.27.0",
+    "html5-qrcode": "^2.3.8"
+  }
+}
