@@ -154,7 +154,7 @@ const App = (() => {
             serial = parts[parts.length - 1];
         }
         $('#scan-status').textContent = `Scanned: ${deviceName} → Searching serial: ${serial}`;
-        await lookupDevice(serial, true);
+        await lookupDevice(serial, false);
     }
 
     // ── Search ──
