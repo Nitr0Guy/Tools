@@ -7,7 +7,7 @@ const Auth = (() => {
         auth: {
             clientId: '8ac4b833-754b-41ba-a4ea-ea8d626a2fb7',
             authority: 'https://login.microsoftonline.com/organizations',
-            redirectUri: window.location.origin,
+            redirectUri: window.location.origin + '/Tools/',
         },
         cache: {
             cacheLocation: 'localStorage',
