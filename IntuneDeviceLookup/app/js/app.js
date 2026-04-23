@@ -147,8 +147,14 @@ const App = (() => {
     async function onBarcodeScan(deviceName) {
         await Scanner.stop();
         updateScannerButtons(false);
-        $('#scan-status').textContent = `Scanned: ${deviceName}`;
-        await lookupDevice(deviceName, true);
+        // Extract serial number from barcode (assume format Prefix-SerialNumber)
+        let serial = deviceName;
+        if (deviceName.includes('-')) {
+            const parts = deviceName.split('-');
+            serial = parts[parts.length - 1];
+        }
+        $('#scan-status').textContent = `Scanned: ${deviceName} → Searching serial: ${serial}`;
+        await lookupDevice(serial, true);
     }
 
     // ── Search ──
